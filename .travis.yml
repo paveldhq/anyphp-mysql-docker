@@ -1,0 +1,13 @@
+language: bash
+services: docker
+env:
+  - VERSION=0.1 MYSQL_VERSION="5.7" BASE_IMAGE="pratushnyi/anyphp:ubuntu" BASE_IMAGE_TAG="ubuntu-bionic-5.7" EXTRA_TAGS="bionic-5.7"
+  - VERSION=0.1 MYSQL_VERSION="8.0" BASE_IMAGE="pratushnyi/anyphp:ubuntu" BASE_IMAGE_TAG="ubuntu-bionic-8.0" EXTRA_TAGS="bionic-8.0"
+  - VERSION=0.1 MYSQL_VERSION="5.7" BASE_IMAGE="pratushnyi/anyphp:stretch" BASE_IMAGE_TAG="stretch-mysql-5.7" EXTRA_TAGS="stretch-5.7"
+  - VERSION=0.1 MYSQL_VERSION="8.0" BASE_IMAGE="pratushnyi/anyphp:stretch" BASE_IMAGE_TAG="stretch-mysql-8.0" EXTRA_TAGS="stretch-8.0"
+  - VERSION=0.1 MYSQL_VERSION="5.7" BASE_IMAGE="pratushnyi/anyphp:buster" BASE_IMAGE_TAG="buster-mysql-5.7" EXTRA_TAGS="buster-5.7;latest"
+  - VERSION=0.1 MYSQL_VERSION="8.0" BASE_IMAGE="pratushnyi/anyphp:buster" BASE_IMAGE_TAG="buster-mysql-8.0" EXTRA_TAGS="buster-8.0"
+script:
+  - "./hooks/build.sh"
+after_script:
+  - docker images
